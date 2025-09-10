@@ -183,7 +183,7 @@ function RecipesScreen({ navigation }) {
         data={colombianRecipes}
         keyExtractor={item => item.id}
         contentContainerStyle={{ padding: 16 }}
-        ListHeaderComponent={<Text style={styles.title}>Recetas típicas colombianas</Text>}
+  ListHeaderComponent={<Text style={styles.title}>Favoritos</Text>}
         renderItem={({ item }) => (
           <RecipeCard
             image={item.imagen}
@@ -335,7 +335,7 @@ export default function App() {
             ),
           })}
         />
-        <Stack.Screen name="RecetasFavoritas" component={RecipesScreen} options={{ title: 'Recetas Colombianas' }} />
+  <Stack.Screen name="RecetasFavoritas" component={RecipesScreen} options={{ title: 'Favoritos' }} />
         <Stack.Screen name="DetalleReceta" component={RecipeDetailScreen} options={{ title: 'Detalle Colombiana' }} />
         <Stack.Screen name="DetalleRecetaApi" component={RecipeDetailApiScreen} options={{ title: 'Detalle Internacional' }} />
       </Stack.Navigator>
