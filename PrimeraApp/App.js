@@ -39,7 +39,21 @@ const Stack = createNativeStackNavigator();
 function InternationalRecipesScreen({ navigation }) {
   const [recipes, setRecipes] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [search, setSearch] = useState("");
+
+  // Buscar recetas por nombre
+  const handleSearch = () => {
+    setLoading(true);
+    fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${search}`)
+      .then(res => res.json())
+      .then(data => {
+        setRecipes(data.meals || []);
+        setLoading(false);
+      });
+  };
+
   useEffect(() => {
+    // Cargar todas al inicio
     fetch('https://www.themealdb.com/api/json/v1/1/search.php?s=')
       .then(res => res.json())
       .then(data => {
@@ -51,6 +65,17 @@ function InternationalRecipesScreen({ navigation }) {
   if (loading) return <ActivityIndicator style={{ marginTop: 40 }} size="large" color="#FF9800" />;
   return (
     <View style={{ flex: 1, backgroundColor: '#FFF3E0' }}>
+      <View style={{ flexDirection: 'row', margin: 16, marginBottom: 0 }}>
+        <TextInput
+          value={search}
+          onChangeText={setSearch}
+          placeholder="Buscar receta internacional..."
+          style={{ flex: 1, backgroundColor: '#fff', borderRadius: 8, padding: 10, fontSize: 16, marginRight: 8, borderWidth: 1, borderColor: '#FF9800' }}
+        />
+        <TouchableOpacity onPress={handleSearch} style={{ backgroundColor: '#FF9800', borderRadius: 8, padding: 10 }}>
+          <Text style={{ color: '#fff', fontWeight: 'bold' }}>Buscar</Text>
+        </TouchableOpacity>
+      </View>
       <FlatList
         data={recipes}
         keyExtractor={item => item.idMeal}
@@ -177,13 +202,38 @@ function CategoriesScreen({ navigation }) {
 
 // Pantalla de recetas por categoría
 function RecipesScreen({ navigation }) {
+  const [search, setSearch] = useState("");
+  const [filteredColombian, setFilteredColombian] = useState(colombianRecipes);
+
+  // Filtrar recetas colombianas por nombre
+  const handleSearch = () => {
+    if (search.trim() === "") {
+      setFilteredColombian(colombianRecipes);
+    } else {
+      setFilteredColombian(
+        colombianRecipes.filter(r => r.nombre.toLowerCase().includes(search.toLowerCase()))
+      );
+    }
+  };
+
   return (
     <View style={{ flex: 1, backgroundColor: '#FFF3E0' }}>
+      <View style={{ flexDirection: 'row', margin: 16, marginBottom: 0 }}>
+        <TextInput
+          value={search}
+          onChangeText={setSearch}
+          placeholder="Buscar receta favorita..."
+          style={{ flex: 1, backgroundColor: '#fff', borderRadius: 8, padding: 10, fontSize: 16, marginRight: 8, borderWidth: 1, borderColor: '#FF9800' }}
+        />
+        <TouchableOpacity onPress={handleSearch} style={{ backgroundColor: '#FF9800', borderRadius: 8, padding: 10 }}>
+          <Text style={{ color: '#fff', fontWeight: 'bold' }}>Buscar</Text>
+        </TouchableOpacity>
+      </View>
       <FlatList
-        data={colombianRecipes}
+        data={filteredColombian}
         keyExtractor={item => item.id}
         contentContainerStyle={{ padding: 16 }}
-  ListHeaderComponent={<Text style={styles.title}>Favoritos</Text>}
+        ListHeaderComponent={<Text style={styles.title}>Favoritos</Text>}
         renderItem={({ item }) => (
           <RecipeCard
             image={item.imagen}
