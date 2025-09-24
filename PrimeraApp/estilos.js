@@ -1,0 +1,105 @@
+import { StyleSheet } from 'react-native';
+
+const estilos = StyleSheet.create({
+  tarjetaRecetaModerna: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: '#fff',
+    borderRadius: 16,
+    marginBottom: 16,
+    padding: 12,
+    elevation: 4,
+    shadowColor: '#FF9800',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.2,
+    shadowRadius: 4,
+  },
+  imagenRecetaModerna: {
+    width: 80,
+    height: 80,
+    borderRadius: 16,
+    marginRight: 18,
+    borderWidth: 2,
+    borderColor: '#FF9800',
+  },
+  nombreRecetaModerna: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    color: '#FF9800',
+  },
+  titulo: {
+    fontSize: 26,
+    fontWeight: 'bold',
+    marginBottom: 18,
+    textAlign: 'center',
+    color: '#FF9800',
+  },
+  tarjetaCategoria: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: '#fff',
+    borderRadius: 10,
+    marginBottom: 12,
+    padding: 10,
+    elevation: 2,
+  },
+  imagenCategoria: {
+    width: 60,
+    height: 60,
+    borderRadius: 30,
+    marginRight: 16,
+  },
+  nombreCategoria: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    color: '#333',
+  },
+  tarjetaReceta: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: '#fff',
+    borderRadius: 10,
+    marginBottom: 12,
+    padding: 10,
+    elevation: 2,
+  },
+  imagenReceta: {
+    width: 60,
+    height: 60,
+    borderRadius: 10,
+    marginRight: 16,
+  },
+  nombreReceta: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    color: '#333',
+  },
+  imagenDetalle: {
+    width: '100%',
+    height: 220,
+    borderRadius: 12,
+    marginBottom: 18,
+  },
+  tituloSeccion: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    marginTop: 12,
+    marginBottom: 6,
+    color: '#FF9800',
+  },
+  ingrediente: {
+    fontSize: 16,
+    color: '#444',
+    marginLeft: 8,
+    marginBottom: 2,
+  },
+  instrucciones: {
+    fontSize: 15,
+    color: '#222',
+    marginTop: 8,
+    marginBottom: 20,
+    lineHeight: 22,
+  },
+});
+
+export default estilos;
