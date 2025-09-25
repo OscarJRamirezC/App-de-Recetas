@@ -1,39 +1,29 @@
-// Eliminar receta por id
-export const eliminarReceta = async (recetaId) => {
-  await remove(ref(db, `recetas/${recetaId}`));
-};
-// helpersFirebase.js
-import { db } from './firebaseConfig';
+
+import { db, db2 } from './firebaseConfig';
+import { collection, addDoc, getDocs, deleteDoc, doc } from 'firebase/firestore';
 import { ref, push, remove, get, set } from 'firebase/database';
 
-// Guardar favorito
 export const guardarFavorito = async (userId, receta) => {
-  // Puedes usar el userId si tienes auth, si no, usa 'global' o similar
   await push(ref(db, `favoritos/${userId}`), receta);
 };
 
-// Eliminar favorito (requiere el id del favorito en la base)
 export const eliminarFavorito = async (userId, favoritoId) => {
   await remove(ref(db, `favoritos/${userId}/${favoritoId}`));
 };
 
-// Obtener favoritos
 export const obtenerFavoritos = async (userId) => {
   const snapshot = await get(ref(db, `favoritos/${userId}`));
   if (snapshot.exists()) {
     const data = snapshot.val();
-    // Devuelve un array de favoritos con su id
     return Object.entries(data).map(([id, receta]) => ({ id, ...receta }));
   }
   return [];
 };
 
-// Crear nueva receta
 export const crearReceta = async (receta) => {
   await push(ref(db, 'recetas'), receta);
 };
 
-// Obtener todas las recetas creadas
 export const obtenerRecetas = async () => {
   const snapshot = await get(ref(db, 'recetas'));
   if (snapshot.exists()) {
@@ -42,3 +32,25 @@ export const obtenerRecetas = async () => {
   }
   return [];
 };
+export const eliminarReceta = async (recetaId) => {
+  await remove(ref(db, `recetas/${recetaId}`));
+};
+
+
+export const crearReceta2 = async (receta) => {
+  await addDoc(collection(db2, 'recetas'), receta);
+};
+
+export const obtenerRecetas2 = async () => {
+  const querySnapshot = await getDocs(collection(db2, 'recetas'));
+  const recetas = [];
+  querySnapshot.forEach((docSnap) => {
+    recetas.push({ id: docSnap.id, ...docSnap.data() });
+  });
+  return recetas;
+};
+
+export const eliminarReceta2 = async (recetaId) => {
+  await deleteDoc(doc(db2, 'recetas', recetaId));
+};
+

@@ -14,17 +14,32 @@ export default function Principal({ navigation }) {
         <Image source={{ uri: 'https://cdn-icons-png.flaticon.com/512/197/197374.png' }} style={estilos.imagenCategoria} />
         <Text style={estilos.nombreCategoria}>Internacionales</Text>
       </TouchableOpacity>
-      <TouchableOpacity
-        style={{
-          backgroundColor: '#FF9800',
-          padding: 15,
-          borderRadius: 8,
-          marginBottom: 20,
-        }}
-        onPress={() => navigation.navigate('GestionRecetas')}
-      >
-        <Text style={{ color: '#fff', fontWeight: 'bold', fontSize: 16 }}>Gestionar Recetas</Text>
-      </TouchableOpacity>
+      <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginTop: 20 }}>
+        <TouchableOpacity
+          style={{
+            backgroundColor: '#FF9800',
+            padding: 15,
+            borderRadius: 8,
+            flex: 1,
+            marginRight: 8,
+          }}
+          onPress={() => navigation.navigate('GestionRecetas')}
+        >
+          <Text style={{ color: '#fff', fontWeight: 'bold', fontSize: 16, textAlign: 'center' }}>Gestionar Recetas</Text>
+        </TouchableOpacity>
+        <TouchableOpacity
+          style={{
+            backgroundColor: '#FF9800',
+            padding: 15,
+            borderRadius: 8,
+            flex: 1,
+            marginLeft: 8,
+          }}
+          onPress={() => navigation.navigate('GestionRecetas2')}
+        >
+          <Text style={{ color: '#fff', fontWeight: 'bold', fontSize: 16, textAlign: 'center' }}>Gestionar Recetas 2</Text>
+        </TouchableOpacity>
+      </View>
     </View>
   );
 }

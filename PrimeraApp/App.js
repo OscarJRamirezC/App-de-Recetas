@@ -8,6 +8,7 @@ import Favoritos from './favoritos';
 import DetalleReceta from './DetalleReceta';
 import DetalleRecetaApi from './DetalleRecetaApi';
 import GestionRecetas from './GestionRecetas';
+import GestionRecetas2 from './GestionRecetas2';
 
 const Stack = createNativeStackNavigator();
 
@@ -32,6 +33,7 @@ export default function App() {
         <Stack.Screen name="DetalleReceta" component={DetalleReceta} options={{ title: 'Detalle Colombiana' }} />
         <Stack.Screen name="DetalleRecetaApi" component={DetalleRecetaApi} options={{ title: 'Detalle Internacional' }} />
         <Stack.Screen name="GestionRecetas" component={GestionRecetas} options={{ title: 'Gestionar Recetas' }} />
+        <Stack.Screen name="GestionRecetas2" component={GestionRecetas2} options={{ title: 'Gestionar Recetas 2' }} />
       </Stack.Navigator>
     </NavigationContainer>
   );
