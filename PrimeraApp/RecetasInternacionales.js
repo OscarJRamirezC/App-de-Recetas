@@ -47,20 +47,22 @@ export default function RecetasInternacionales({ navigation }) {
         keyExtractor={item => item.idMeal}
         contentContainerStyle={{ padding: 16 }}
         ListHeaderComponent={
-          <View style={{ marginBottom: 10, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
-            <Text style={estilos.titulo}>Recetas Internacionales</Text>
-            <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+          <>
+            <View style={{ marginBottom: 10, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
+              <Text style={estilos.titulo}>Recetas Internacionales</Text>
+              <TouchableOpacity onPress={() => navigation.replace('InicioSesion')} style={{ alignSelf: 'flex-end' }}>
+                <Text style={{ color: 'red', fontWeight: 'bold', fontSize: 16 }}>Cerrar sesión</Text>
+              </TouchableOpacity>
+            </View>
+            <View style={{ flexDirection: 'row', alignItems: 'center', marginBottom: 10 }}>
               <TouchableOpacity onPress={() => navigation.navigate('GestionRecetas')} style={{ backgroundColor: '#FF9800', borderRadius: 8, padding: 8, marginRight: 8 }}>
                 <Text style={{ color: '#fff', fontWeight: 'bold', fontSize: 14 }}>Gestionar Recetas</Text>
               </TouchableOpacity>
               <TouchableOpacity onPress={() => navigation.navigate('GestionRecetas2')} style={{ backgroundColor: '#FF9800', borderRadius: 8, padding: 8, marginRight: 10 }}>
                 <Text style={{ color: '#fff', fontWeight: 'bold', fontSize: 14 }}>Gestionar Recetas 2</Text>
               </TouchableOpacity>
-              <TouchableOpacity onPress={() => navigation.replace('InicioSesion')} style={{ alignSelf: 'flex-end' }}>
-                <Text style={{ color: 'red', fontWeight: 'bold', fontSize: 16 }}>Cerrar sesión</Text>
-              </TouchableOpacity>
             </View>
-          </View>
+          </>
         }
         renderItem={({ item }) => (
           <View>

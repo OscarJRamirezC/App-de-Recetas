@@ -1,7 +1,8 @@
 {
   "expo": {
-    "name": "PrimeraApp",
-    "slug": "PrimeraApp",
+    "name": "App de Recetas",
+    "slug": "app-de-recetas",
+    "description": "Aplicación para gestionar y compartir recetas internacionales y colombianas.",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -13,13 +14,17 @@
       "backgroundColor": "#ffffff"
     },
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.Demon.appderecetas"
     },
     "android": {
+      "package": "com.Demon.appderecetas",
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
+      "permissions": [],
+      "versionCode": 1,
       "edgeToEdgeEnabled": true
     },
     "web": {
@@ -27,6 +32,12 @@
     },
     "plugins": [
       "expo-router"
-    ]
+    ],
+    "extra": {
+      "router": {},
+      "eas": {
+        "projectId": "34046921-aede-4f91-8bec-dcecc88c5b1c"
+      }
+    }
   }
 }
